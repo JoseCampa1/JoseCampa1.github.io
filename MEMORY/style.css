@@ -305,18 +305,24 @@ html, body {
   text-overflow: ellipsis;
 }
 
-/* MÓVILES: cartas más grandes y tablero responsivo */
+/* MÓVILES: cartas más grandes pero siempre responsivas */
 @media (max-width: 480px) {
   .game-board {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
   }
   .card-inner::after {
-    font-size: 48px;
+    font-size: 36px;
   }
-  #adBanner {
-    height: 40px;
+}
+
+/* MÓVILES muy pequeños */
+@media (max-width: 360px) {
+  .game-board {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 6px;
   }
-  #adBanner p {
-    font-size: 12px;
+  .card-inner::after {
+    font-size: 28px;
   }
 }
