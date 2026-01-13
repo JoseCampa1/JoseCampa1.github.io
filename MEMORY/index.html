@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background"></div>
+
+<!-- MENÚ -->
+<div class="screen active" id="menuScreen">
+  <h1>🧠 Memory Game</h1>
+  <p>Selecciona dificultad</p>
+  <div class="levels">
+    <button onclick="selectLevel(0)">🟢 Fácil</button>
+    <button onclick="selectLevel(1)">🟡 Normal</button>
+    <button onclick="selectLevel(2)">🔴 Difícil</button>
+    <button onclick="selectLevel(3)">⚫ Experto</button>
+  </div>
+</div>
+
+<!-- SELECCIÓN DE IMÁGENES -->
+<div class="screen" id="imageScreen">
+  <h2>📸 Elige tus imágenes</h2>
+
+  <label class="upload-box">
+    <input type="file" id="imageInput" accept="image/*" multiple hidden>
+    <div class="upload-content">
+      <span>➕</span>
+      <p>Seleccionar fotos</p>
+    </div>
+  </label>
+
+  <p id="imgCount">0 imágenes seleccionadas</p>
+  <div class="preview" id="preview"></div>
+
+  <div class="img-buttons">
+    <button class="backBtnImg" onclick="backFromImages()">⬅ Regresar</button>
+    <button class="playBtn" onclick="startGame()">🎮 Jugar</button>
+  </div>
+</div>
+
+<!-- JUEGO -->
+<div class="screen" id="gameScreen">
+  <div class="top-bar">
+    <button class="backBtn" onclick="goBack()">⬅</button>
+    <span>Nivel: <b id="levelName"></b></span>
+    <span>Movs: <b id="moves">0</b></span>
+    <span id="timeBox">⏳ <b id="time"></b></span>
+  </div>
+
+  <div class="game-board" id="board"></div>
+</div>
+
+<!-- GANASTE -->
+<div class="win-screen" id="winScreen">
+  <div class="win-box">
+    <h2>🎉 ¡GANASTE! 🎉</h2>
+    <p>Regresando al menú...</p>
+  </div>
+</div>
+
+<!-- PERDISTE -->
+<div class="lose-screen" id="loseScreen">
+  <div class="lose-box">
+    <h2>💥 PERDISTE 💥</h2>
+    <button onclick="backToMenu()">Volver al menú</button>
+  </div>
+</div>
+
+<!-- BANNER DE ANUNCIOS -->
+<div id="adBanner"><p>Aquí va tu anuncio</p></div>
+
+<script src="game.js"></script>
+</body>
+</html>
