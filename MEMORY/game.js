@@ -30,6 +30,7 @@ function selectLevel(lvl) {
   showScreen("imageScreen");
 }
 
+// Selección de imágenes
 imageInput.addEventListener("change", () => {
   preview.innerHTML = "";
   const files = Array.from(imageInput.files);
@@ -61,9 +62,6 @@ function startGame() {
   }
 
   const filesForGame = selectedFiles.slice(0, requiredImages);
-  const imgs = filesForGame.map(f => URL.createObjectURL(f));
-  cards = [...imgs, ...imgs].sort(() => Math.random() - 0.5);
-
   showScreen("gameScreen");
   board.innerHTML = "";
   flipped = [];
@@ -73,7 +71,8 @@ function startGame() {
   levelName.textContent = levels[currentLevel].name;
   timeBox.style.display = levels[currentLevel].time ? "block" : "none";
 
-  adjustBoardGrid(cards.length);
+  const imgs = filesForGame.map(f => URL.createObjectURL(f));
+  cards = [...imgs, ...imgs].sort(() => Math.random() - 0.5);
 
   cards.forEach((src, i) => {
     const card = document.createElement("div");
@@ -94,25 +93,6 @@ function startGame() {
   });
 
   if (levels[currentLevel].time) startTimer(levels[currentLevel].time);
-}
-
-function adjustBoardGrid(totalCards) {
-  let columns = 5;
-  let rows = Math.ceil(totalCards / columns);
-
-  if (window.innerWidth <= 480) {
-    if (totalCards <= 4) columns = totalCards;
-    else if (totalCards <= 8) columns = 4;
-    else columns = 5;
-    rows = Math.ceil(totalCards / columns);
-  } else {
-    if (totalCards <= 4) columns = totalCards;
-    else if (totalCards <= 12) columns = 4;
-    else columns = 5;
-    rows = Math.ceil(totalCards / columns);
-  }
-
-  board.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
 }
 
 function flip(card, src) {
@@ -175,6 +155,8 @@ function win() {
   }, 2500);
 }
 
-window.addEventListener("resize", () => {
-  if (cards.length) adjustBoardGrid(cards.length);
-});
+// NUEVA FUNCION REINTENTAR
+function retryGame() {
+  loseScreen.style.display = "none";
+  startGame();
+}
