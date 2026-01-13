@@ -303,10 +303,7 @@ html, body {
 
 /* MÓVILES: TABLERO TOTALMENTE RESPONSIVO */
 @media (max-width: 480px) {
-  /* Para hasta 20 cartas (10 pares) */
   .game-board {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(60px, 1fr);
     gap: 6px;
     width: 100%;
     max-width: 100%;
@@ -320,8 +317,6 @@ html, body {
 /* MÓVILES MUY PEQUEÑOS */
 @media (max-width: 360px) {
   .game-board {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(50px, 1fr);
     gap: 4px;
   }
 
