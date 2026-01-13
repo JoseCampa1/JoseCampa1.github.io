@@ -67,12 +67,15 @@
 <div class="lose-screen" id="loseScreen">
   <div class="lose-box">
     <h2>💥 PERDISTE 💥</h2>
-    <button onclick="backToMenu()">Volver al menú</button>
+    <div class="lose-buttons">
+      <button class="menuBtn" onclick="backToMenu()">⬅ Regresar al menú</button>
+      <button class="retryBtn" onclick="retryGame()">🔄 Reintentar</button>
+    </div>
   </div>
 </div>
 
 <!-- BANNER DE ANUNCIOS -->
-<div id="adBanner"><p>Aquí va tu anuncio</p></div>
+<div id="adBanner"><p>📢 Aquí tu anuncio o mensaje promocional</p></div>
 
 <script src="game.js"></script>
 </body>
